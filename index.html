@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Waveform — Audio Visualizer & Synth</title>
+  <meta name="description" content="In-browser FFT visualizer and mini-synth. No dependencies." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main id="app">
+    <header class="topbar">
+      <h1>wave<span>form</span></h1>
+      <div class="source-toggle" role="group" aria-label="Audio source">
+        <button id="src-osc" class="active">synth</button>
+        <button id="src-mic">microphone</button>
+      </div>
+      <div class="viz-toggle" role="group" aria-label="Visualizer mode">
+        <button data-viz="bars" class="active">bars</button>
+        <button data-viz="wave">wave</button>
+        <button data-viz="radial">radial</button>
+      </div>
+    </header>
+
+    <canvas id="stage"></canvas>
+
+    <section class="controls">
+      <div class="control-group">
+        <label>oscillator</label>
+        <div class="wave-buttons" role="group" aria-label="Waveform type">
+          <button data-wave="sine" class="active">sine</button>
+          <button data-wave="square">square</button>
+          <button data-wave="sawtooth">saw</button>
+          <button data-wave="triangle">tri</button>
+        </div>
+      </div>
+      <div class="control-group">
+        <label for="filter-freq">filter <span id="filter-val">2200 Hz</span></label>
+        <input type="range" id="filter-freq" min="100" max="8000" value="2200" />
+      </div>
+      <div class="control-group">
+        <label for="master-vol">volume <span id="vol-val">60%</span></label>
+        <input type="range" id="master-vol" min="0" max="100" value="60" />
+      </div>
+      <div class="control-group">
+        <label for="attack">attack <span id="attack-val">10 ms</span></label>
+        <input type="range" id="attack" min="1" max="400" value="10" />
+      </div>
+    </section>
+
+    <section class="keyboard" id="keyboard" aria-label="Playable keyboard, keys A to K"></section>
+
+    <footer class="foot">
+      <span>keys <kbd>A</kbd>–<kbd>K</kbd> play notes · <kbd>W</kbd><kbd>E</kbd><kbd>T</kbd><kbd>Y</kbd><kbd>U</kbd> sharps</span>
+      <button id="panic" class="ghost-btn">panic (all notes off)</button>
+    </footer>
+  </main>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
